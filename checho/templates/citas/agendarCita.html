@@ -1,0 +1,54 @@
+{% extends 'bases/base.html' %}
+{% block title %}CHECHO BARBERS EMPLEADOS{% endblock%}
+
+{%block content %}
+
+
+    <div id="listar">
+
+        <section class="container letra  ">
+            <div >
+                <form action="{% url 'checho:guardarCita' %}" method="post">{% csrf_token %}
+
+                    <div class="row g-3 my-5 ">
+                        <h1 class="letra">AGENDAR CITA</h1>
+                        <div class="col">
+                            <h3 ><label for="fecha">Ingrese la fecha</label></h3>
+                            <input type="date" class="form-control" name="fecha"  aria-label="First name">
+                        </div>
+                        <div class="col">
+                            <h3 ><label for="hora">Ingrese la Hora</label></h3>
+                            <input type="time" class="form-control" name="hora"  aria-label="Last name">
+                        </div>
+                    </div>
+                   
+                    <div class="row g-3 my-5">
+                        
+                        <div class="col">
+                            <h3 ><label for="empleados" >Eliga el Empleado</label></h3>
+                            <select name="empleados" id="">
+                                {% for i in empleados %}
+                                <option value="{{i.id}}">{{i.nombre}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col">
+                            <h3 ><label for="servicios" >Eliga el Servicio</label></h3>
+                            <select name="servicios" id="">
+                                {% for i in servicios %}
+                                <option value="{{i.id}}">{{i.nombreServicio}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success">AGENDAR</button>
+                    </div><br>
+                </form>>
+                
+            </div>
+        </section><br>
+
+    </div>
+
+{%endblock%}
